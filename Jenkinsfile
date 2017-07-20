@@ -7,7 +7,7 @@ pipeline {
     stages {
 
         stage('Compile java') {
-            node {
+            steps {
                 git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 def mvnHome = tool 'M3'
                 sh "${mvnHome}/bin/mvn -B verify"
@@ -15,15 +15,21 @@ pipeline {
         }
 
         stage('run tests') {
-            echo 'Running tests'
+            steps {
+                echo 'Running tests'
+            }
         }
 
         stage('deploying') {
-            echo 'deploying'
+            steps {
+                echo 'deploying'
+            }
         }
 
         stage('testing') {
-            echo 'testing'
+            steps {
+                echo 'testing'
+            }
         }
     }
 
