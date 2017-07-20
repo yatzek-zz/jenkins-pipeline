@@ -3,14 +3,15 @@
 pipeline {
 
     agent any
-
+    tools {
+        maven 'apache-maven-3.0.1'
+    }
     stages {
 
         stage('Compile java') {
             steps {
                 git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                def mvnHome = tool 'M3'
-                sh "${mvnHome}/bin/mvn -B verify"
+                sh "mvn -B verify"
             }
         }
 
