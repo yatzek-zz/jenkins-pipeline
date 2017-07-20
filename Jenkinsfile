@@ -4,20 +4,20 @@ pipeline {
 
     agent any
 
-    step 'Compile java'
+    stage 'Compile java'
     node {
         git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
         def mvnHome = tool 'M3'
         sh "${mvnHome}/bin/mvn -B verify"
     }
 
-    step 'run tests'
+    stage 'run tests'
     echo 'Running tests'
 
-    step 'deploying'
+    stage 'deploying'
     echo 'deploying'
 
-    step 'testing'
+    stage 'testing'
     echo 'testing'
 
 }
